@@ -1,19 +1,19 @@
-import { Formik, FormikProps, FormikHelpers } from 'formik';
-import { AuthValues } from 'types/components/templates.d';
-import { authValidator as validationSchema } from 'validators/auth/auth.validator';
-import { AuthProps } from 'types/components/templates.d';
-import { AuthForm } from 'components/modules';
-import { AuthActions } from 'store/auth/ActionCreators';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from 'hooks/redux.hooks';
+import { Formik, FormikProps, FormikHelpers } from "formik";
+import { AuthValues } from "types/components/templates.d";
+import { authValidator as validationSchema } from "validators/auth/auth.validator";
+import { AuthProps } from "types/components/templates.d";
+import { AuthForm } from "components/modules";
+import { AuthActions } from "store/auth/ActionCreators";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "hooks/redux.hooks";
 
 function Auth({ isSignUp }: AuthProps) {
   const nav = useNavigate();
   const dispatch = useAppDispatch();
 
   const initialValues: AuthValues = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   const onSubmit = async (
@@ -22,12 +22,15 @@ function Auth({ isSignUp }: AuthProps) {
   ) => {
     try {
       const { username, password } = values;
+      console.log(isSignUp);
       isSignUp
         ? await dispatch(AuthActions.login(username, password))
         : await dispatch(AuthActions.register(username, password));
 
       setSubmitting(false);
-      nav('/chat');
+      if (localStorage.getItem("token")) {
+        nav("/chat");
+      }
     } catch (err) {}
   };
 
@@ -35,7 +38,8 @@ function Auth({ isSignUp }: AuthProps) {
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
-      validationSchema={validationSchema}>
+      validationSchema={validationSchema}
+    >
       {(formik: FormikProps<AuthValues>) => {
         return <AuthForm formik={formik} isSignUp={isSignUp} />;
       }}

@@ -1,4 +1,4 @@
-import { IUser } from './models/IUser.d';
+import { IUser } from "./models/IUser.d";
 
 export interface authResponse {
   refreshToken: string;
@@ -6,10 +6,14 @@ export interface authResponse {
   user: IUser;
 }
 
-export interface refreshReponse {
+export interface refreshResponse {
   accessToken: string;
 }
 
-export interface logoutReponse {
+export interface logoutResponse {
   msg: string;
+}
+
+export interface getUserResponse {
+  user: IUser;
 }
