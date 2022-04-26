@@ -1,0 +1,7 @@
+@mixin round() {
+  border-radius: 10px;
+}
+
+@mixin circled() {
+  border-radius: 20px;
+}

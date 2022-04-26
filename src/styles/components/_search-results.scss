@@ -1,0 +1,20 @@
+@use "../abstracts" as *;
+@use "../mixins/" as *;
+
+@mixin search-result() {
+  background-color: $raisin;
+  color: $powder;
+  width: 100%;
+  height: 6vh;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  display: flex;
+  p {
+    font-weight: $defaultWeight;
+    font-size: $defaultSize;
+    margin-left: 20px;
+    position: absolute;
+    display: inline;
+  }
+}

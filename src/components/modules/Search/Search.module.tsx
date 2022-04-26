@@ -1,27 +1,32 @@
-import { SearchResults } from "components/elements";
+import { SearchResults } from "components/modules";
 import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import React from "react";
 import { SearchActions } from "store/search/ActionCreators";
 import { SocketType } from "types/socket";
+import { searchSlice } from "store/search/SearchSlice";
+import "./Search.scss";
 
 function Search() {
-  const { results, error, query } = useAppSelector(
-    (state) => state.searchReducer
-  );
+  const { query, isSearching } = useAppSelector((state) => state.searchReducer);
   const { socket } = useAppSelector((state) => state.socketReducer);
   const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(results);
     dispatch(
       SearchActions.makeQueryRequest(e.target.value, socket as SocketType)
     );
   };
 
   return (
-    <div>
-      <input onChange={handleChange} value={query} />
-      <SearchResults results={results} error={error} />
+    <div className={`modules__search`}>
+      <input
+        onFocus={() => {
+          dispatch(searchSlice.actions.toggleFocus(true));
+        }}
+        placeholder='Search'
+        onChange={handleChange}
+        value={query}
+      />
     </div>
   );
 }

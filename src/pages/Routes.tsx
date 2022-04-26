@@ -8,13 +8,11 @@ import LandingPage from "./index";
 
 export function Routes() {
   return (
-    <Router>
-      <Switch>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/register' element={<Auth isSignUp={false} />} />
-        <Route path='/login' element={<Auth isSignUp={true} />} />
-        <Route path='/chat' element={<Chat />} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route path='/' element={<LandingPage />} />
+      <Route path='/register' element={<Auth isSignUp={false} />} />
+      <Route path='/login' element={<Auth isSignUp={true} />} />
+      <Route path='/chat' element={<Chat />} />
+    </Switch>
   );
 }

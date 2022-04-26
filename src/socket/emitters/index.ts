@@ -1,3 +1,3 @@
-import { createConversation } from "./createConversation.emit";
+import { ConversationEmitters } from "./conversation/ConversationEmitters";
 
-export { createConversation };
+export { ConversationEmitters };

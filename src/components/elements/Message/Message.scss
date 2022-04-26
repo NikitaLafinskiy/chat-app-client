@@ -1,0 +1,20 @@
+@use "../../../styles/components" as *;
+@use "../../../styles/abstracts" as *;
+
+.elements {
+  &__message {
+    &__current {
+      @include message;
+      background-color: $main;
+      text-align: end;
+      align-self: end;
+    }
+
+    &__other {
+      @include message;
+      background-color: $raisin;
+      color: $powder;
+      align-self: start;
+    }
+  }
+}

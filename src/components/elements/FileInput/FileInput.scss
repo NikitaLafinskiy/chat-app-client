@@ -1,0 +1,12 @@
+.elements {
+  &__file-input {
+    > label {
+      > img {
+        width: 70px;
+      }
+    }
+    > input {
+      display: none;
+    }
+  }
+}

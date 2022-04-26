@@ -2,8 +2,14 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/AuthSlice";
 import { socketReducer } from "./socket/SocketSlice";
 import { searchReducer } from "./search/SearchSlice";
+import { chatReducer } from "./chat/ChatSlice";
 
-const reducer = combineReducers({ authReducer, socketReducer, searchReducer });
+const reducer = combineReducers({
+  authReducer,
+  socketReducer,
+  searchReducer,
+  chatReducer,
+});
 
 export const setupStore = () => {
   return configureStore({

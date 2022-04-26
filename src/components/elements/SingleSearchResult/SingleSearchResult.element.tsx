@@ -1,27 +1,46 @@
 import { SingleSearchResultProps } from "types/components/elements";
-import { createConversation } from "socket/emitters";
-import { useAppSelector } from "hooks/redux.hooks";
+import { ConversationEmitters } from "socket/emitters";
+import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import { SocketType } from "types/socket";
-import { useGroupName } from "hooks/useGroupName";
+import { ElementHelpers } from "utils/elements/ElementsHelpers";
 import { IUser } from "types/models/IUser";
+import "./SingleSearchResults.scss";
 
 function SingleSearchResult({ result, error }: SingleSearchResultProps) {
   const { socket } = useAppSelector((state) => state.socketReducer);
   const { user } = useAppSelector((state) => state.authReducer);
-  const groupName = useGroupName([result as IUser], user as IUser);
+  const dispatch = useAppDispatch();
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className={`elements__single-search-result__error`}>
+        <p>{error}</p>
+      </div>
+    );
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log(e);
+  const groupName = ElementHelpers.pmGroupName(
+    [result as IUser],
+    user as IUser
+  );
+
+  const handleClick = () => {
     if (user && result) {
-      createConversation(socket as SocketType, true, [result], user, groupName);
+      ConversationEmitters.createConversation(socket as SocketType, {
+        isPrivate: true,
+        users: [result],
+        currentUser: user,
+        groupName,
+        dispatch,
+      });
     }
   };
 
-  return <div onClick={handleClick}> {result?.username}</div>;
+  return (
+    <div className={`elements__single-search-result`} onClick={handleClick}>
+      <p> {result?.username} </p>
+    </div>
+  );
 }
 
 export default SingleSearchResult;

@@ -1,26 +1,42 @@
-import { Search } from "components/modules";
+import { Search, SearchResults } from "components/modules";
 import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import { useEffect } from "react";
-import { AuthActions } from "store/auth/ActionCreators";
+import { ChatActions } from "store/chat/ActionCreators";
+import { Conversations, MessageForm, Messages } from "components/modules";
+import { ConversationsWrapper, MessagesWrapper } from "components/layouts";
+import "./Chat.scss";
 
 function Chat() {
   const { user } = useAppSelector((state) => state.authReducer);
+  const { conversations, currentConversation } = useAppSelector(
+    (state) => state.chatReducer
+  );
+  const { isSearching, results, error } = useAppSelector(
+    (state) => state.searchReducer
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(user);
-    if (!user) {
-      const restoreUser = async () => {
-        await dispatch(AuthActions.restoreUser());
-      };
-
-      restoreUser();
+    if (user) {
+      dispatch(ChatActions.getConversations(user.id));
+      return;
     }
   }, [user]);
 
   return (
-    <div>
-      <Search />
+    <div className={`templates__chat`}>
+      <ConversationsWrapper>
+        <Search />
+        {isSearching ? (
+          <SearchResults results={results} error={error} />
+        ) : (
+          <Conversations conversations={conversations} />
+        )}
+      </ConversationsWrapper>
+      <MessagesWrapper conversation={currentConversation}>
+        <Messages />
+        <MessageForm />
+      </MessagesWrapper>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { IUser } from "./models/IUser.d";
+import { IUser, IConversation } from "./models/IUser.d";
 
 export interface authResponse {
   refreshToken: string;
@@ -16,4 +16,12 @@ export interface logoutResponse {
 
 export interface getUserResponse {
   user: IUser;
+}
+
+export interface getConversations {
+  conversations: IConversation[];
+}
+
+export interface getMessages {
+  messages: IMessage[];
 }

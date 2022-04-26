@@ -1,0 +1,19 @@
+@use "../abstracts" as *;
+
+@mixin conversation() {
+  color: $powder;
+  width: 100%;
+  height: 6vh;
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1px solid $pitch;
+  position: relative;
+
+  p {
+    font-weight: $defaultWeight;
+    font-size: $defaultSize;
+    margin-left: 20px;
+    position: absolute;
+    display: inline;
+  }
+}

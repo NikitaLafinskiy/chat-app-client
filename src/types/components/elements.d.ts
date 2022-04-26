@@ -1,4 +1,4 @@
-import { IUser } from "types/models/IUser.d";
+import { IUser, IConversation } from "types/models/IUser.d";
 
 type BasicElement<T> = {
   style?: React.CSSProperties;
@@ -42,3 +42,27 @@ interface SingleSearchResultFail {
 export type SingleSearchResultProps =
   | SingleSearchResultSuccess
   | SingleSearchResultFail;
+
+export interface SingleConversationProps {
+  children: string;
+  isPrivate: boolean;
+  conversation: IConversation;
+}
+
+export interface FileInputProps extends BasicElement<"input"> {
+  setFile: React.Dispatch<
+    React.SetStateAction<
+      | {
+          initialFile: File;
+          convertedFile: string;
+        }
+      | undefined
+    >
+  >;
+}
+
+export interface MessageProps {
+  body: string;
+  from: number;
+  file?: string;
+}

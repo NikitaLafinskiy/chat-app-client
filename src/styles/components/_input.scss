@@ -1,0 +1,9 @@
+@use "../abstracts" as *;
+
+@mixin input($width, $height) {
+  all: unset;
+  background-color: $raisin;
+  width: $width;
+  height: $height;
+  color: $powder;
+}

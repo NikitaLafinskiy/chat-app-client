@@ -1,0 +1,28 @@
+@use "../../../styles/mixins" as *;
+
+.modules {
+  &__messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: scroll;
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: #4545458f #ffffff;
+    }
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #4545458f;
+      border-radius: 10px;
+      border: 3px solid #ffffff;
+    }
+  }
+}

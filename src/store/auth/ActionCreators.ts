@@ -37,6 +37,7 @@ export class AuthActions {
     return async (dispatch: AppDispatch) => {
       try {
         const res = await AuthServices.getUser();
+        console.log(res.data);
         dispatch(authSlice.actions.setUser(res.data.user));
       } catch (err) {
         dispatch(

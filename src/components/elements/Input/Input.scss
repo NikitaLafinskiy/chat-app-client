@@ -1,0 +1,9 @@
+@use "../../../styles/components" as *;
+
+.elements {
+  &__input {
+    input {
+      @include input(5vw, 3vh);
+    }
+  }
+}
