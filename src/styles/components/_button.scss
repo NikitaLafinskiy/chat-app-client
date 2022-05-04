@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+@mixin button() {
+  all: unset;
+  background-color: $main;
+  color: $raisin-dark;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin button-circled($size) {
+  @include button;
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+
+  &:hover {
+    background-color: $secondary;
+    transition: 0.1s;
+    transform: scale(1.1);
+  }
+}

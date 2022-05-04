@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from "hooks/redux.hooks";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const nav = useNavigate();
+
   useEffect(() => {
-    console.log('landing reached');
-    if (localStorage.getItem('token')) {
-      nav('/chat');
+    if (!localStorage.getItem("token")) {
+      nav("/register");
+      return;
     }
-    nav('/register');
+    nav("/chat");
   }, [nav]);
   return <div></div>;
 }

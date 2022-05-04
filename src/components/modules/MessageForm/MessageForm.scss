@@ -1,0 +1,39 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/abstracts" as *;
+@use "../../../styles/components" as *;
+
+.modules {
+  &__message-form {
+    bottom: 4vh;
+    @include centerHorizontal;
+    display: flex;
+    border-radius: 8px;
+    background-color: $raisin;
+    height: 5vh;
+    width: 100%;
+    justify-content: space-between;
+
+    input[name="message"] {
+      width: 23vw;
+      height: 4vh;
+      padding-left: 20px;
+    }
+
+    > div {
+      height: 100%;
+      margin-right: 15px;
+      @include centerChild;
+      justify-self: flex-end;
+
+      button {
+        @include button-circled(4vh);
+        @include centerChild;
+
+        img {
+          margin-left: 3px;
+          width: 2.5vh;
+        }
+      }
+    }
+  }
+}

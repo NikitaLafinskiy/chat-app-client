@@ -1,0 +1,9 @@
+@use "../../../styles/abstracts" as *;
+
+.layouts {
+  &__conversations-wrapper {
+    height: 100vh;
+    width: 27%;
+    background-color: $raisin;
+  }
+}

@@ -1,0 +1,38 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/abstracts" as *;
+@use "../../../styles/components" as *;
+
+.modules {
+  &__search {
+    width: 100%;
+    height: 7vh;
+    background-color: $raisin;
+    border-bottom: 1px solid $grey;
+    @include centerChild;
+
+    input {
+      @include input(80%, 3.5vh);
+      @include circled;
+      @include animated(0.1s);
+      background-color: $raisin-dark;
+      border: 1px solid $grey;
+      padding-left: 15px;
+
+      &:hover {
+        @include animated(0.1s);
+        border: 1px solid $powder;
+      }
+
+      &:focus {
+        border: 1px solid $main;
+        &::placeholder {
+          color: $main;
+        }
+      }
+
+      &::placeholder {
+        color: $grey;
+      }
+    }
+  }
+}

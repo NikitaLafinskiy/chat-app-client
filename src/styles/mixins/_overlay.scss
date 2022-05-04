@@ -1,0 +1,8 @@
+@mixin overlay($color) {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: $color;
+  display: block;
+}

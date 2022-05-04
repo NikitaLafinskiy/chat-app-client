@@ -1,0 +1,12 @@
+@use "./abstracts" as *;
+@use "./mixins" as *;
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: $defaultText;
+  background-color: $raisin-dark;
+  box-sizing: content-box;
+
+  @include scrollbar;
+}

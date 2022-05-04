@@ -1,8 +1,8 @@
-import { HeaderProps } from 'types/components/elements';
-import { useClasses } from 'hooks/useClasses';
+import { HeaderProps } from "types/components/elements";
+import { ElementHelpers } from "utils/elements/ElementsHelpers";
 
 function Header({ children, style, className, ...rest }: HeaderProps) {
-  const classes = useClasses('elements_header', className);
+  const classes = ElementHelpers.convertClass("elements__header", className);
   return (
     <h1 className={classes} style={style} {...rest}>
       {children}

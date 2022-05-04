@@ -1,8 +1,15 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { authReducer } from './auth/AuthSlice';
-import { socketReducer } from './socket/SocketSlice';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { authReducer } from "./auth/AuthSlice";
+import { socketReducer } from "./socket/SocketSlice";
+import { searchReducer } from "./search/SearchSlice";
+import { chatReducer } from "./chat/ChatSlice";
 
-const reducer = combineReducers({ authReducer, socketReducer });
+const reducer = combineReducers({
+  authReducer,
+  socketReducer,
+  searchReducer,
+  chatReducer,
+});
 
 export const setupStore = () => {
   return configureStore({
@@ -14,4 +21,4 @@ export const setupStore = () => {
 
 export type RootState = ReturnType<typeof reducer>;
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['dispatch'];
+export type AppDispatch = AppStore["dispatch"];

@@ -1,0 +1,16 @@
+@use "../../../styles/abstracts" as *;
+@use "../../../styles/mixins" as *;
+
+.layouts {
+  &__messages-wrapper {
+    width: 100%;
+    background-color: $raisin-light;
+    @include centerChild;
+
+    > div {
+      width: 60%;
+      height: 100%;
+      position: relative;
+    }
+  }
+}

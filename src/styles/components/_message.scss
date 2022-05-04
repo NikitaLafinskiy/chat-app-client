@@ -1,0 +1,8 @@
+@mixin message() {
+  display: inline;
+  border-radius: 5px;
+  max-width: 300px;
+  overflow-wrap: break-word;
+  padding: 5px;
+  margin: 6px 4px 0px 4px;
+}

@@ -1,0 +1,35 @@
+@use "../../../styles/abstracts" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/components" as *;
+
+.elements {
+  &__single-search-result {
+    @include search-result;
+    border-bottom: 1px solid $pitch;
+
+    &::before {
+      @include round;
+      @include overlay(rgb($grey, 0.1));
+      @include center;
+      @include animated(0.1s);
+      width: 100%;
+      height: 6vh;
+      opacity: 0;
+    }
+
+    &:hover {
+      &::before {
+        @include animated(0.1s);
+        opacity: 1;
+      }
+    }
+
+    &__error {
+      @include search-result;
+      @include centerChild;
+      p {
+        margin-left: 0px;
+      }
+    }
+  }
+}
