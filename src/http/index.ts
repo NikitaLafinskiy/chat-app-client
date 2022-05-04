@@ -1,7 +1,8 @@
 import axios from "axios";
 import { refresh } from "./RefreshInterceptor";
 
-export const API_URL = "http://localhost:6969/api";
+// export const API_URL = "http://localhost:6969/api";
+export const API_URL = "https://chat-platform-server.herokuapp.com/api";
 
 export const $api = axios.create({
   baseURL: API_URL,

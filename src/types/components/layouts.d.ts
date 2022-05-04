@@ -7,3 +7,5 @@ export interface WrapperProps {
 export interface MessagesWrapperProps extends WrapperProps {
   conversation: IConversation | null;
 }
+
+export interface AuthWrapperProps extends WrapperProps {}

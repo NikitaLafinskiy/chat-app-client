@@ -6,6 +6,7 @@ import { AuthForm } from "components/modules";
 import { AuthActions } from "store/auth/ActionCreators";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "hooks/redux.hooks";
+import { AuthWrapper } from "components/layouts";
 
 function Auth({ isSignUp }: AuthProps) {
   const nav = useNavigate();
@@ -22,7 +23,6 @@ function Auth({ isSignUp }: AuthProps) {
   ) => {
     try {
       const { username, password } = values;
-      console.log(isSignUp);
       isSignUp
         ? await dispatch(AuthActions.login(username, password))
         : await dispatch(AuthActions.register(username, password));
@@ -35,15 +35,17 @@ function Auth({ isSignUp }: AuthProps) {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {(formik: FormikProps<AuthValues>) => {
-        return <AuthForm formik={formik} isSignUp={isSignUp} />;
-      }}
-    </Formik>
+    <AuthWrapper>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {(formik: FormikProps<AuthValues>) => {
+          return <AuthForm formik={formik} isSignUp={isSignUp} />;
+        }}
+      </Formik>
+    </AuthWrapper>
   );
 }
 

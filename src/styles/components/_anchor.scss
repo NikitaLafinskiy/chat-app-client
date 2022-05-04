@@ -1,0 +1,8 @@
+@use "../abstracts" as *;
+
+@mixin anchor() {
+  all: unset;
+  color: $main;
+  cursor: pointer;
+  font-size: small;
+}

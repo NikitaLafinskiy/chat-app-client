@@ -1,9 +1,5 @@
 import { Auth, Chat } from "components/templates";
-import {
-  BrowserRouter as Router,
-  Routes as Switch,
-  Route,
-} from "react-router-dom";
+import { Routes as Switch, Route } from "react-router-dom";
 import LandingPage from "./index";
 
 export function Routes() {

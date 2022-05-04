@@ -1,4 +1,3 @@
-import { SearchResults } from "components/modules";
 import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import React from "react";
 import { SearchActions } from "store/search/ActionCreators";
@@ -7,14 +6,21 @@ import { searchSlice } from "store/search/SearchSlice";
 import "./Search.scss";
 
 function Search() {
-  const { query, isSearching } = useAppSelector((state) => state.searchReducer);
+  const { query } = useAppSelector((state) => state.searchReducer);
+  const { user } = useAppSelector((state) => state.authReducer);
   const { socket } = useAppSelector((state) => state.socketReducer);
   const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(
-      SearchActions.makeQueryRequest(e.target.value, socket as SocketType)
-    );
+    if (user) {
+      dispatch(
+        SearchActions.makeQueryRequest(
+          e.target.value,
+          user,
+          socket as SocketType
+        )
+      );
+    }
   };
 
   return (

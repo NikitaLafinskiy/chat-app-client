@@ -6,6 +6,8 @@ import SingleConversation from "./SingleConversation/SingleConversation.element"
 import SingleSearchResult from "./SingleSearchResult/SingleSearchResult.element";
 import Message from "./Message/Message.element";
 import FileInput from "./FileInput/FileInput.element";
+import Anchor from "./Anchor/Anchor.element";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.element";
 
 export {
   Input,
@@ -16,4 +18,6 @@ export {
   SingleSearchResult,
   Message,
   FileInput,
+  Anchor,
+  ProtectedRoute,
 };

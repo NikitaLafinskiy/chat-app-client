@@ -6,4 +6,5 @@ export interface ChatState {
   error: string | null;
   currentConversation: IConversation | null;
   messages: IMessageFromServer[];
+  messagesDiv: HTMLDivElement | null;
 }

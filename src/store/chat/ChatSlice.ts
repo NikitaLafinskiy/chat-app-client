@@ -8,6 +8,7 @@ const initialState: ChatState = {
   error: null,
   currentConversation: null,
   messages: [],
+  messagesDiv: null,
 };
 
 export const chatSlice = createSlice({
@@ -31,8 +32,6 @@ export const chatSlice = createSlice({
       state,
       action: PayloadAction<IMessageFromServer[]>
     ) => {
-      console.log(state.messages);
-      console.log(action.payload);
       state.messages = [...action.payload];
     },
   },

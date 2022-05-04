@@ -9,7 +9,7 @@ export interface ServerToClientEvents {
 }
 
 export interface ClientToServerEvents {
-  queryUsers: (query: string) => void;
+  queryUsers: ({ query: string, user: IUser }) => void;
   createConversation: (data: {
     isPrivate: boolean;
     currentUser: IUser;

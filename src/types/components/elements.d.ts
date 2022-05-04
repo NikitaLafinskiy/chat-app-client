@@ -66,3 +66,11 @@ export interface MessageProps {
   from: number;
   file?: string;
 }
+
+export interface AnchorProps extends BasicElement<"a"> {
+  to: string;
+}
+
+export interface ProtectedRouteProps {
+  children: React.ReactNode;
+}

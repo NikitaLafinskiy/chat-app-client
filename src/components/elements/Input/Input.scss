@@ -1,9 +1,14 @@
 @use "../../../styles/components" as *;
+@use "../../../styles/abstracts" as *;
 
 .elements {
   &__input {
     input {
       @include input(5vw, 3vh);
+      padding-left: 5px;
     }
+
+    color: $grey;
+    font-size: 14px;
   }
 }
