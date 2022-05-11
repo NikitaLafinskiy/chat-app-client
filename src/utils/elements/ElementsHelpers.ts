@@ -17,4 +17,13 @@ export class ElementHelpers {
 
     return groupName;
   }
+
+  static revertPmGroupName(currentUser: IUser, text: string): string {
+    const names = text.split("__");
+    const name = names.filter(
+      (name) => name !== currentUser?.username && name !== "pm"
+    )[0];
+
+    return name;
+  }
 }

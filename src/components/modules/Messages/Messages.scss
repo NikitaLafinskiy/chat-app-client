@@ -10,7 +10,6 @@
       scrollbar-width: auto;
       scrollbar-color: #4545458f #ffffff;
     }
-    /* Chrome, Edge, and Safari */
     *::-webkit-scrollbar {
       width: 12px;
     }
@@ -23,6 +22,13 @@
       background-color: #4545458f;
       border-radius: 10px;
       border: 3px solid #ffffff;
+    }
+
+    &__mobile {
+      @extend .modules__messages;
+
+      position: relative;
+      top: 8vh;
     }
   }
 }

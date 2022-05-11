@@ -14,3 +14,7 @@ export interface ConversationsProps {
 export interface MessageFormValues {
   message: string;
 }
+
+export interface HeaderProps {
+  text: string;
+}

@@ -7,7 +7,7 @@ function Input({ name, style, className, type, ...rest }: InputProps) {
   const classes = ElementHelpers.convertClass("elements__input", className);
   return (
     <div className={classes} style={style}>
-      <Field as={type} name={name} {...rest} />
+      <Field autocomplete='off' as={type} name={name} {...rest} />
       <ErrorMessage name={name} />
     </div>
   );

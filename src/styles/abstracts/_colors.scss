@@ -1,9 +1,13 @@
 $main: #ee7674;
-$main-transparent: #ee767473;
+$main-transparent: rgba($main, 0.5);
 $secondary: #e16f7c;
 $grey: #808782;
 $powder: #f7f9f7;
 $raisin: #252323;
-$raisin-dark: #1f1d1d;
-$raisin-light: #302d2d;
+$raisin-dark: darken($raisin, 3%);
+$raisin-light: lighten($raisin, 6%);
 $pitch: #111010;
+
+// #1f1d1d
+// #302d2d
+// #ee767473
