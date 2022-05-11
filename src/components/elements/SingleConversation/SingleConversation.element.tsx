@@ -3,6 +3,8 @@ import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import { ChatActions } from "store/chat/ActionCreators";
 import { IConversation } from "types/models/IConversation";
 import "./SingleConversation.scss";
+import { ElementHelpers } from "utils/elements/ElementsHelpers";
+import { IUser } from "types/models/IUser";
 
 function SingleConversation({
   children,
@@ -36,8 +38,7 @@ function SingleConversation({
     );
   }
 
-  const names = children.split("__");
-  const name = names.filter((name) => name !== user?.username && name !== "pm");
+  const name = ElementHelpers.revertPmGroupName(user as IUser, children);
 
   return (
     <div

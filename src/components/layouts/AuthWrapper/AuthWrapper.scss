@@ -1,5 +1,6 @@
 @use "../../../styles/mixins" as *;
 @use "../../../styles/abstracts" as *;
+@use "../../../styles/components" as *;
 
 .layouts {
   &__auth-wrapper {
@@ -7,48 +8,50 @@
     height: 100vh;
 
     & > div {
-      @include centerChild;
-      flex-direction: column;
-      width: 30vw;
-      background-color: $raisin-light;
-      padding: 30px 20px 20px 20px;
+      @include authForm;
 
-      form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 60%;
+      @media only screen and (max-width: 900px) {
+        width: 120vw;
+        height: 60%;
 
-        & .elements__input {
-          margin: 12px 0px 12px 0px;
-          height: 4vh;
-          width: 100%;
+        button {
+          height: 6vh !important;
+        }
+
+        .elements__input {
+          margin: 20px 0px 20px 0px !important;
 
           input {
-            width: 100%;
-            height: 4vh;
+            width: 100% !important;
+            height: 6vh !important;
           }
         }
+      }
 
-        & > h1 {
-          align-self: flex-start;
-          height: 4vh;
-          margin: 0px 0px 10px 0px;
-          color: $powder;
-          font-weight: 200;
+      @media only screen and (max-width: 490px) {
+        a {
+          text-align: center;
         }
 
-        & > button {
-          width: 100%;
-          height: 4vh;
-          margin-top: 12px;
-          margin-bottom: 5px;
+        h1 {
+          font-size: 30px;
         }
 
-        & > a {
-          margin-top: 7px;
+        .elements__input {
+          font-size: 12px;
         }
+      }
+    }
+
+    @media only screen and (max-width: 360px) {
+      width: 100vw;
+      @include center;
+      h1 {
+        font-size: 20px;
+      }
+
+      .elements__input {
+        font-size: 10px;
       }
     }
   }

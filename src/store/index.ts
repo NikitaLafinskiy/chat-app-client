@@ -3,12 +3,14 @@ import { authReducer } from "./auth/AuthSlice";
 import { socketReducer } from "./socket/SocketSlice";
 import { searchReducer } from "./search/SearchSlice";
 import { chatReducer } from "./chat/ChatSlice";
+import { screenReducer } from "./screen/ScreenSlice";
 
 const reducer = combineReducers({
   authReducer,
   socketReducer,
   searchReducer,
   chatReducer,
+  screenReducer,
 });
 
 export const setupStore = () => {

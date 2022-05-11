@@ -1,0 +1,48 @@
+@use "../mixins" as *;
+@use "../abstracts" as *;
+
+@mixin authForm() {
+  @include centerChild;
+  flex-direction: column;
+  width: 30vw;
+  background-color: $raisin-light;
+  padding: 30px 20px 20px 20px;
+
+  form {
+    @include centerChild;
+    flex-direction: column;
+    width: 60%;
+
+    & .elements__input {
+      margin: 12px 0px 12px 0px;
+      height: 4vh;
+      width: 100%;
+
+      input {
+        width: 100%;
+        height: 4vh;
+      }
+    }
+
+    & > h1 {
+      align-self: flex-start;
+      height: 4vh;
+      margin: 0px 0px 10px 0px;
+      color: $powder;
+      font-weight: 200;
+    }
+
+    & > button {
+      width: 100%;
+      height: 4vh;
+      margin-top: 12px;
+      margin-bottom: 5px;
+    }
+
+    & > a {
+      margin-top: 7px;
+    }
+  }
+}
+
+// ADD A MEDIA QUERY !!!!!!!!!!!!!!!!!!???????????????!!!!!!!!!!!!!!!

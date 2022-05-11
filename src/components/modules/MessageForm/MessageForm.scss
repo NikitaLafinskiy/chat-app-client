@@ -35,5 +35,15 @@
         }
       }
     }
+
+    @media only screen and (max-width: 900px) {
+      height: 8vh;
+
+      > div {
+        button {
+          @include button-circled(6vh);
+        }
+      }
+    }
   }
 }

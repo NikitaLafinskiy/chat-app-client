@@ -22,7 +22,7 @@ export const chatSlice = createSlice({
     setError(state, action: PayloadAction<string>) {
       state.error = action.payload;
     },
-    setCurrentConversation(state, action: PayloadAction<IConversation>) {
+    setCurrentConversation(state, action: PayloadAction<IConversation | null>) {
       state.currentConversation = action.payload;
     },
     updateMessage: (state, action: PayloadAction<IMessageFromServer>) => {

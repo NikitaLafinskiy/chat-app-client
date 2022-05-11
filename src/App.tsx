@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { io } from "socket.io-client";
 import { useAppDispatch } from "hooks/redux.hooks";
 import { socketSlice } from "store/socket/SocketSlice";
+import { screenSlice } from "store/screen/ScreenSlice";
 import { SocketType } from "types/socket.d";
 import { initSocketListeners } from "socket/listeners";
 import { useNavigate } from "react-router";
@@ -16,6 +17,9 @@ function App() {
     const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
     dispatch(socketSlice.actions.setSocket(socket));
     initSocketListeners(socket, dispatch, nav);
+
+    const isMobile = window.innerWidth < 700;
+    dispatch(screenSlice.actions.setAdapt(isMobile));
   }, [dispatch]);
 
   return (

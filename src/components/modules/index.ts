@@ -4,6 +4,7 @@ import SearchResults from "./SearchResults/SearchResults.module";
 import Conversations from "./Conversations/Conversations.module";
 import MessageForm from "./MessageForm/MessageForm.module";
 import Messages from "./Messages/Messages.module";
+import Header from "./Header/Header.module";
 
 export {
   AuthForm,
@@ -12,4 +13,5 @@ export {
   Conversations,
   Messages,
   MessageForm,
+  Header,
 };
