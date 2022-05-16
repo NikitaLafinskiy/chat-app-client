@@ -1,9 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CCHAT",
+  "name": "Cosmic Chat",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#252323",
+  "background_color": "#252323",
+  "orientation": "portrait-primary"
 }
