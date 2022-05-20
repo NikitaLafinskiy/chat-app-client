@@ -7,6 +7,7 @@ body {
   font-family: $defaultText;
   background-color: $raisin-dark;
   box-sizing: content-box;
+  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 
   @include scrollbar;

@@ -10,6 +10,10 @@
     border-bottom: 1px solid $grey;
     @include centerChild;
 
+    img {
+      width: 10%;
+    }
+
     input {
       @include input(80%, 3.5vh);
       @include circled;

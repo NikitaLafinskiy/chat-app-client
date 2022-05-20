@@ -6,7 +6,7 @@ import { searchSlice } from "store/search/SearchSlice";
 import "./Search.scss";
 
 function Search() {
-  const { query } = useAppSelector((state) => state.searchReducer);
+  const { query, isSearching } = useAppSelector((state) => state.searchReducer);
   const { user } = useAppSelector((state) => state.authReducer);
   const { socket } = useAppSelector((state) => state.socketReducer);
   const dispatch = useAppDispatch();
@@ -25,7 +25,17 @@ function Search() {
 
   return (
     <div className={`modules__search`}>
+      {isSearching && (
+        <img
+          onClick={() => {
+            dispatch(searchSlice.actions.toggleFocus(false));
+          }}
+          src='/images/go_back.svg'
+          alt='back'
+        />
+      )}
       <input
+        style={{ width: isSearching ? "70%" : "80%" }}
         onFocus={() => {
           dispatch(searchSlice.actions.toggleFocus(true));
         }}
