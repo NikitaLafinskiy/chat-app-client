@@ -20,8 +20,6 @@ function Chat() {
     (state) => state.searchReducer
   );
 
-  console.log(isMobile);
-
   if (isMobile) {
     return (
       <ProtectedRoute>

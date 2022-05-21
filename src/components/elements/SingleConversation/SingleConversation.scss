@@ -36,5 +36,31 @@
         opacity: 1;
       }
     }
+
+    @media only screen and (max-height: 750px) {
+      height: 8vh;
+      &::before {
+        height: 8vh;
+      }
+      &__active {
+        height: 8vh;
+        &::before {
+          height: 8vh;
+        }
+      }
+    }
+    @media only screen and (max-height: 550px) {
+      height: 10vh;
+      &::before {
+        height: 10vh;
+      }
+      &__active {
+        height: 10vh;
+
+        &::before {
+          height: 10vh;
+        }
+      }
+    }
   }
 }

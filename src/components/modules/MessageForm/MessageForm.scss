@@ -45,5 +45,28 @@
         }
       }
     }
+
+    @media only screen and (max-height: 900px) {
+      height: 8vh;
+
+      input[name="message"] {
+        height: 8vh;
+        @include round;
+      }
+
+      > div {
+        button {
+          @include button-circled(6vh);
+        }
+      }
+    }
+
+    @media only screen and (max-height: 550px) {
+      height: 10vh;
+
+      input[name="message"] {
+        height: 10vh;
+      }
+    }
   }
 }

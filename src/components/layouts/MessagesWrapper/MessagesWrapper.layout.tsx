@@ -29,7 +29,9 @@ function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
       {conversation ? (
         <div>{children}</div>
       ) : (
-        <div>No messages with current user</div>
+        <div id='no-messages'>
+          <div>No messages with current user</div>
+        </div>
       )}
     </div>
   );

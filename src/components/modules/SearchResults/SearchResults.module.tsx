@@ -2,7 +2,6 @@ import { SearchResultsProps } from "types/components/elements";
 import { SingleSearchResult } from "components/elements";
 
 function SearchResults({ results, error }: SearchResultsProps) {
-  console.log(error);
   if (error) {
     return <SingleSearchResult error={error} result={null} />;
   }

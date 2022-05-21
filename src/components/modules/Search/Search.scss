@@ -12,6 +12,7 @@
 
     img {
       width: 10%;
+      cursor: pointer;
     }
 
     input {
@@ -21,6 +22,7 @@
       background-color: $raisin-dark;
       border: 1px solid $grey;
       padding-left: 15px;
+      height: 62%;
 
       &:hover {
         @include animated(0.1s);
@@ -37,6 +39,13 @@
       &::placeholder {
         color: $grey;
       }
+    }
+
+    @media only screen and (max-height: 750px) {
+      height: 8vh;
+    }
+    @media only screen and (max-height: 550px) {
+      height: 10vh;
     }
   }
 }
