@@ -12,7 +12,7 @@ function AuthForm({ formik, isSignUp }: AuthFormProps) {
         placeholder='Input your password: '
       />
       <Button type='submit' disabled={!formik.dirty || formik.isSubmitting}>
-        Submit
+        {formik.isSubmitting ? "Submitting..." : "Submit"}
       </Button>
       <Anchor to={`/${isSignUp ? "register" : "login"}`}>
         {isSignUp
