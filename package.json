@@ -53,7 +53,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && esbuild --outfile=build/service-worker.js --bundle src/service-worker.ts --define:process.env.PUBLIC_URL=\"https://cosmic-chat.netlify.app\" && workbox injectManifest workbox-config.js",
+    "build": "react-scripts build && esbuild --outfile=build/service-worker.js --bundle src/service-worker.ts && workbox injectManifest workbox-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
