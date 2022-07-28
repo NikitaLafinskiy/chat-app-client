@@ -28,7 +28,7 @@ registerRoute(({ request, url }: { request: Request; url: URL }) => {
   }
 
   return true;
-}, createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html"));
+}, createHandlerBoundToURL("https://cosmic-chat.netlify.app" + "/index.html"));
 
 registerRoute(
   ({ url }) =>
