@@ -1,0 +1,24 @@
+@use "../mixins" as *;
+@use "../abstracts" as *;
+
+@mixin loadingMessage() {
+  div {
+    position: relative;
+    @include center;
+    font-size: 120%;
+    text-align: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background-color: rgba($grey, 0.1);
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      z-index: -1;
+      @include round;
+    }
+  }
+}

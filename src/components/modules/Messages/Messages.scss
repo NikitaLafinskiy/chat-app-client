@@ -1,7 +1,12 @@
 @use "../../../styles/mixins" as *;
+@use "../../../styles/components" as *;
 
 .modules {
   &__messages {
+    &__loading {
+      @include loadingMessage;
+    }
+
     display: flex;
     flex-direction: column;
     max-height: 90vh;

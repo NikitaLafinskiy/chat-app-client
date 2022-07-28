@@ -16,8 +16,6 @@ export class ConversationListener {
   }
 
   static sendMessage(message: IMessageFromServer, dispatch: AppDispatch) {
-    console.log(message);
-    console.log("message received");
     dispatch(chatSlice.actions.updateMessage(message));
   }
 }
