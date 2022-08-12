@@ -14,8 +14,8 @@ function App() {
   const nav = useNavigate();
 
   useEffect(() => {
-    // const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
-    const socket: SocketType = io("http://localhost:6969");
+    const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
+    // const socket: SocketType = io("http://localhost:6969");
     dispatch(socketSlice.actions.setSocket(socket));
     initSocketListeners(socket, dispatch, nav);
   }, [dispatch]);
