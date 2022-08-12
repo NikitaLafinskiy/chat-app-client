@@ -8,15 +8,14 @@ import { SocketType } from "types/socket.d";
 import { initSocketListeners } from "socket/listeners";
 import { useNavigate } from "react-router";
 import { MainWrapper } from "components/layouts";
-import { setupInterceptors } from "./http";
 
 function App() {
   const dispatch = useAppDispatch();
   const nav = useNavigate();
-  setupInterceptors(nav);
 
   useEffect(() => {
-    const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
+    // const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
+    const socket: SocketType = io("http://localhost:6969");
     dispatch(socketSlice.actions.setSocket(socket));
     initSocketListeners(socket, dispatch, nav);
   }, [dispatch]);

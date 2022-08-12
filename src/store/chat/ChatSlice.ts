@@ -9,6 +9,7 @@ const initialState: ChatState = {
   currentConversation: null,
   messages: [],
   messagesDiv: null,
+  isInitialMessageLoad: true,
 };
 
 export const chatSlice = createSlice({
@@ -33,6 +34,15 @@ export const chatSlice = createSlice({
       action: PayloadAction<IMessageFromServer[]>
     ) => {
       state.messages = [...action.payload];
+    },
+    lazyLoadNewMessages: (
+      state,
+      action: PayloadAction<IMessageFromServer[]>
+    ) => {
+      state.messages = [...action.payload, ...state.messages];
+    },
+    setIsInitialMessageLoad: (state, action: PayloadAction<boolean>) => {
+      state.isInitialMessageLoad = action.payload;
     },
   },
 });

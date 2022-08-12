@@ -11,17 +11,23 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   const nav = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("refreshUUID")) {
       nav("/register");
-    } else if (localStorage.getItem("token") && user) {
+    } else if (
+      localStorage.getItem("accessUUID") &&
+      localStorage.getItem("refreshUUID") &&
+      user
+    ) {
       dispatch(ChatActions.getConversations(user.id));
       return;
-    } else if (localStorage.getItem("token") && !user) {
+    } else if (
+      (localStorage.getItem("refreshUUID") && !user) ||
+      !localStorage.getItem("accessUUID")
+    ) {
       try {
-        const restoreUser = async () => {
-          await dispatch(AuthActions.restoreUser());
-        };
-        restoreUser();
+        (async () => {
+          await dispatch(AuthActions.restoreUser(nav));
+        })();
       } catch (err) {
         nav("/register");
       }

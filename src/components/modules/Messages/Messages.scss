@@ -3,7 +3,9 @@
 
 .modules {
   &__messages {
-    &__loading {
+    &__loader {
+      background-color: transparent;
+      color: transparent;
       @include loadingMessage;
     }
 
@@ -35,6 +37,10 @@
       position: relative;
       top: 8vh;
       height: 79vh;
+
+      &__loader {
+        @extend .modules__messages__loader;
+      }
     }
   }
 }

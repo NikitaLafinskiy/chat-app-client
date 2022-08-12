@@ -1,13 +1,13 @@
 import { IUser, IConversation } from "./models/IUser.d";
 
 export interface authResponse {
-  refreshToken: string;
-  accessToken: string;
+  refreshUUID: string;
+  accessUUID: string;
   user: IUser;
 }
 
 export interface refreshResponse {
-  accessToken: string;
+  accessUUID: string;
 }
 
 export interface logoutResponse {
@@ -16,6 +16,8 @@ export interface logoutResponse {
 
 export interface getUserResponse {
   user: IUser;
+  accessUUID?: string;
+  refreshUUID?: string;
 }
 
 export interface getConversations {

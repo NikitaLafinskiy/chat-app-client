@@ -28,7 +28,9 @@ function Auth({ isSignUp }: AuthProps) {
         : await dispatch(AuthActions.register(username, password));
 
       setSubmitting(false);
-      if (localStorage.getItem("token")) {
+
+      if (localStorage.getItem("accessUUID")) {
+        console.log("redirecting");
         nav("/chat");
       }
     } catch (err) {}

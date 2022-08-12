@@ -22,12 +22,23 @@ export class ChatActions {
     return async (dispatch: AppDispatch) => {
       try {
         ConversationEmitters.joinUser(socket, conversation);
-        const res = await ChatServices.getMessages(conversation.id);
+        const res = await ChatServices.getMessages(conversation.id, 0);
 
         dispatch(chatSlice.actions.setCurrentConversation(conversation));
         dispatch(chatSlice.actions.updateManyMessages(res.data.messages));
       } catch (err) {
         dispatch(chatSlice.actions.setError("No messages sent"));
+      }
+    };
+  }
+
+  static loadNewMessages(conversation: IConversation, index: number) {
+    return async (dispatch: AppDispatch) => {
+      try {
+        const res = await ChatServices.getMessages(conversation.id, index);
+        dispatch(chatSlice.actions.lazyLoadNewMessages([...res.data.messages]));
+      } catch (err) {
+        dispatch(chatSlice.actions.setError("No new messages"));
       }
     };
   }

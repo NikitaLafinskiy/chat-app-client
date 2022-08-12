@@ -1,4 +1,3 @@
-import { useAppSelector } from "hooks/redux.hooks";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +5,7 @@ function LandingPage() {
   const nav = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("refreshToken")) {
       nav("/register");
       return;
     }

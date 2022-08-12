@@ -5,14 +5,17 @@ import "./MessagesWrapper.scss";
 
 function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
   const messagesDiv = useRef<HTMLDivElement>(null);
-  const { messages } = useAppSelector((state) => state.chatReducer);
+  const { messages, isInitialMessageLoad } = useAppSelector(
+    (state) => state.chatReducer
+  );
   const { isMobile } = useAppSelector((state) => state.screenReducer);
 
   useEffect(() => {
     if (
       messagesDiv.current
         ?.getElementsByTagName("div")[0]
-        .getElementsByTagName("div")[0]
+        .getElementsByTagName("div")[0] &&
+      isInitialMessageLoad
     ) {
       const allMessagesDiv = isMobile
         ? messagesDiv.current?.getElementsByTagName("div")[2]

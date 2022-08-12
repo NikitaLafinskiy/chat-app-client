@@ -23,6 +23,8 @@
     "@types/yup": "^0.29.13",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "axios": "^0.26.1",
+    "dexie": "^3.2.2",
+    "dexie-react-hooks": "^1.1.1",
     "enzyme": "^3.11.0",
     "esbuild": "^0.14.50",
     "formik": "^2.2.9",

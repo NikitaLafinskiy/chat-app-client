@@ -10,8 +10,9 @@ export class ChatServices {
   }
 
   static getMessages(
-    conversationID: string
+    conversationID: string,
+    index: number
   ): Promise<AxiosResponse<getMessages>> {
-    return $api.post(`/chat/messages`, { conversationID });
+    return $api.post(`/chat/messages/${index}`, { conversationID });
   }
 }
