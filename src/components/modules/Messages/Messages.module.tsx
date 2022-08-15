@@ -7,7 +7,7 @@ import { ChatActions } from "store/chat/ActionCreators";
 import { IConversation } from "types/models/IConversation";
 
 function Messages() {
-  const { messages, currentConversation, isMoreMessages } = useAppSelector(
+  const { messages, currentConversation, messagesLoaded } = useAppSelector(
     (state) => state.chatReducer
   );
   const { isMobile } = useAppSelector((state) => state.screenReducer);
@@ -16,17 +16,12 @@ function Messages() {
 
   const { isVisible } = useIntersect(updateMessagesRef);
   const [count, setCount] = useState(1);
+  const [isMore, setIsMore] = useState(!(messagesLoaded < 30));
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleScroll = async () => {
-    if (isVisible && !isSubmitting && isMoreMessages) {
-      setIsSubmitting(true);
-      await dispatch(
-        ChatActions.loadNewMessages(currentConversation as IConversation, count)
-      );
-      setCount((prev) => prev + 1);
-    }
-  };
+  useEffect(() => {
+    setIsMore(!(messagesLoaded < 30));
+  }, [messagesLoaded]);
 
   useEffect(() => {
     setCount(1);
@@ -35,6 +30,16 @@ function Messages() {
   useEffect(() => {
     setIsSubmitting(false);
   }, [count]);
+
+  const handleScroll = async () => {
+    if (isVisible && !isSubmitting && isMore) {
+      setIsSubmitting(true);
+      await dispatch(
+        ChatActions.loadNewMessages(currentConversation as IConversation, count)
+      );
+      setCount((prev) => prev + 1);
+    }
+  };
 
   return (
     <div
@@ -45,7 +50,7 @@ function Messages() {
         className={`modules__messages${
           isMobile ? "__mobile" : ""
         }__loaderWrapper`}
-        style={isMoreMessages ? undefined : { display: "none" }}
+        style={isMore ? undefined : { display: "none" }}
       >
         <Loader
           ref={(el) => {

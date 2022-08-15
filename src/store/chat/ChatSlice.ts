@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IConversation } from "types/models/IConversation";
-import { IMessageFromServer, MessagePayload } from "types/models/IMessage";
+import { IMessageFromServer } from "types/models/IMessage";
 import { ChatState } from "types/redux/chat.d";
 
 const initialState: ChatState = {
@@ -9,7 +9,7 @@ const initialState: ChatState = {
   currentConversation: null,
   messages: [],
   messagesDiv: null,
-  isMoreMessages: false,
+  messagesLoaded: 30,
 };
 
 export const chatSlice = createSlice({
@@ -41,12 +41,8 @@ export const chatSlice = createSlice({
     ) => {
       state.messages = [...action.payload, ...state.messages];
     },
-    setIsMoreMessages: (state, action: PayloadAction<number>) => {
-      if (action.payload < 30) {
-        state.isMoreMessages = false;
-      } else if (action.payload >= 30) {
-        state.isMoreMessages = true;
-      }
+    setMessagesLoaded: (state, action: PayloadAction<number>) => {
+      state.messagesLoaded = action.payload;
     },
   },
 });
