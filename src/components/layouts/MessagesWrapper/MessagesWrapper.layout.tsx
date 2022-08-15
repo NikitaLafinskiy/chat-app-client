@@ -23,7 +23,8 @@ function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
             [isMobile ? 2 : 0].getElementsByTagName("div")[0];
       const msg = allMessagesDiv.children[messagesLoaded] as HTMLElement;
       if (msg) {
-        allMessagesDiv.scrollTop = msg.offsetTop - 820;
+        allMessagesDiv.scrollTop =
+          msg.offsetTop - (window.screen.height - window.screen.height * 0.25);
       }
     }
   }, [messagesDiv, messages, messagesLoaded]);
