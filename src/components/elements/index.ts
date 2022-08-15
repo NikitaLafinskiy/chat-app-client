@@ -8,6 +8,7 @@ import Message from "./Message/Message.element";
 import FileInput from "./FileInput/FileInput.element";
 import Anchor from "./Anchor/Anchor.element";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.element";
+import Loader from "./Loader/Loader.element";
 
 export {
   Input,
@@ -20,4 +21,5 @@ export {
   FileInput,
   Anchor,
   ProtectedRoute,
+  Loader,
 };

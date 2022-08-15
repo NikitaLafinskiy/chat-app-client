@@ -74,3 +74,7 @@ export interface AnchorProps extends BasicElement<"a"> {
 export interface ProtectedRouteProps {
   children: React.ReactNode;
 }
+
+export interface LoaderProps {
+  style?: React.CSSProperties;
+}

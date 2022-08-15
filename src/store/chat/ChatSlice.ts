@@ -9,7 +9,7 @@ const initialState: ChatState = {
   currentConversation: null,
   messages: [],
   messagesDiv: null,
-  isInitialMessageLoad: true,
+  isMoreMessages: false,
 };
 
 export const chatSlice = createSlice({
@@ -41,8 +41,12 @@ export const chatSlice = createSlice({
     ) => {
       state.messages = [...action.payload, ...state.messages];
     },
-    setIsInitialMessageLoad: (state, action: PayloadAction<boolean>) => {
-      state.isInitialMessageLoad = action.payload;
+    setIsMoreMessages: (state, action: PayloadAction<number>) => {
+      if (action.payload < 30) {
+        state.isMoreMessages = false;
+      } else if (action.payload >= 30) {
+        state.isMoreMessages = true;
+      }
     },
   },
 });

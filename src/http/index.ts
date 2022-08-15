@@ -1,5 +1,4 @@
 import axios from "axios";
-import { NavigateFunction } from "react-router-dom";
 
 // export const API_URL = "http://localhost:6969/api";
 export const API_URL = "https://chat-platform-server.herokuapp.com/api";

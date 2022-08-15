@@ -5,7 +5,7 @@ function LandingPage() {
   const nav = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("refreshToken")) {
+    if (!localStorage.getItem("refreshUUID")) {
       nav("/register");
       return;
     }

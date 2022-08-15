@@ -7,5 +7,5 @@ export interface ChatState {
   currentConversation: IConversation | null;
   messages: IMessageFromServer[];
   messagesDiv: HTMLDivElement | null;
-  isInitialMessageLoad: boolean;
+  isMoreMessages: boolean;
 }

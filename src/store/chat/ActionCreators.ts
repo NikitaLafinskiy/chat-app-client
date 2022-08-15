@@ -26,6 +26,7 @@ export class ChatActions {
 
         dispatch(chatSlice.actions.setCurrentConversation(conversation));
         dispatch(chatSlice.actions.updateManyMessages(res.data.messages));
+        dispatch(chatSlice.actions.setIsMoreMessages(res.data.messages.length));
       } catch (err) {
         dispatch(chatSlice.actions.setError("No messages sent"));
       }
@@ -37,6 +38,7 @@ export class ChatActions {
       try {
         const res = await ChatServices.getMessages(conversation.id, index);
         dispatch(chatSlice.actions.lazyLoadNewMessages([...res.data.messages]));
+        dispatch(chatSlice.actions.setIsMoreMessages(res.data.messages.length));
       } catch (err) {
         dispatch(chatSlice.actions.setError("No new messages"));
       }

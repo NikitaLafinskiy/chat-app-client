@@ -1,14 +1,13 @@
 import { useAppSelector, useAppDispatch } from "hooks/redux.hooks";
 import { useState, useRef, useEffect } from "react";
-import { Message } from "components/elements";
+import { Loader, Message } from "components/elements";
 import useIntersect from "hooks/useIntersect";
 import "./Messages.scss";
 import { ChatActions } from "store/chat/ActionCreators";
 import { IConversation } from "types/models/IConversation";
-import { chatSlice } from "store/chat/ChatSlice";
 
 function Messages() {
-  const { messages, currentConversation } = useAppSelector(
+  const { messages, currentConversation, isMoreMessages } = useAppSelector(
     (state) => state.chatReducer
   );
   const { isMobile } = useAppSelector((state) => state.screenReducer);
@@ -20,9 +19,8 @@ function Messages() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleScroll = async () => {
-    if (isVisible && !isSubmitting) {
+    if (isVisible && !isSubmitting && isMoreMessages) {
       setIsSubmitting(true);
-      dispatch(chatSlice.actions.setIsInitialMessageLoad(false));
       await dispatch(
         ChatActions.loadNewMessages(currentConversation as IConversation, count)
       );
@@ -32,12 +30,11 @@ function Messages() {
 
   useEffect(() => {
     setCount(1);
-    dispatch(chatSlice.actions.setIsInitialMessageLoad(true));
   }, [currentConversation]);
 
   useEffect(() => {
     setIsSubmitting(false);
-  }, [messages]);
+  }, [count]);
 
   return (
     <div
@@ -45,12 +42,16 @@ function Messages() {
       className={`modules__messages${isMobile ? "__mobile" : ""}`}
     >
       <div
-        className={`modules__messages${isMobile ? "__mobile" : ""}__loader`}
-        ref={(el) => {
-          updateMessagesRef.current = el;
-        }}
+        className={`modules__messages${
+          isMobile ? "__mobile" : ""
+        }__loaderWrapper`}
+        style={isMoreMessages ? undefined : { display: "none" }}
       >
-        loader
+        <Loader
+          ref={(el) => {
+            updateMessagesRef.current = el;
+          }}
+        />
       </div>
       {messages.map((message) => {
         return (

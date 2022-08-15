@@ -3,9 +3,9 @@
 
 .modules {
   &__messages {
-    &__loader {
-      background-color: transparent;
-      color: transparent;
+    &__loaderWrapper {
+      width: 100%;
+      @include centerChild;
       @include loadingMessage;
     }
 
@@ -38,8 +38,8 @@
       top: 8vh;
       height: 79vh;
 
-      &__loader {
-        @extend .modules__messages__loader;
+      &__loaderWrapper {
+        @extend .modules__messages__loaderWrapper;
       }
     }
   }
