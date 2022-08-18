@@ -4,6 +4,7 @@ import { SocketType } from "types/socket";
 import { NavigateFunction } from "react-router-dom";
 import { IMessageFromServer } from "types/models/IMessage";
 import { chatSlice } from "store/chat/ChatSlice";
+import { store } from "store";
 
 export class ConversationListener {
   static conversationCreated(
@@ -16,6 +17,12 @@ export class ConversationListener {
   }
 
   static sendMessage(message: IMessageFromServer, dispatch: AppDispatch) {
-    dispatch(chatSlice.actions.updateMessage(message));
+    const state = store.getState();
+    const conversation = state.chatReducer.currentConversation;
+    if (message.conversation.id === conversation!.id) {
+      dispatch(chatSlice.actions.updateMessage(message));
+      return;
+    }
+    return;
   }
 }

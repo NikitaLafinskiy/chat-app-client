@@ -24,6 +24,7 @@ export class ChatActions {
         ConversationEmitters.joinUser(socket, conversation);
         const res = await ChatServices.getMessages(conversation.id, 0);
 
+        console.log("resetting convo");
         dispatch(chatSlice.actions.setCurrentConversation(conversation));
         dispatch(chatSlice.actions.updateManyMessages(res.data.messages));
         dispatch(chatSlice.actions.setMessagesLoaded(res.data.messages.length));

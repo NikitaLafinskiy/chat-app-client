@@ -5,7 +5,7 @@ import { searchReducer } from "./search/SearchSlice";
 import { chatReducer } from "./chat/ChatSlice";
 import { screenReducer } from "./screen/ScreenSlice";
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   authReducer,
   socketReducer,
   searchReducer,
@@ -13,12 +13,14 @@ const reducer = combineReducers({
   screenReducer,
 });
 
+export const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
+
 export const setupStore = () => {
-  return configureStore({
-    reducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }),
-  });
+  return store;
 };
 
 export type RootState = ReturnType<typeof reducer>;

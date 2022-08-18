@@ -4,6 +4,7 @@ import { SearchListeners } from "./search/SearchListeners";
 import { NavigateFunction } from "react-router";
 import { ConversationListener } from "./conversation/ConversationListener";
 import { IMessageFromServer } from "types/models/IMessage";
+import { IConversation } from "types/models/IConversation";
 
 export const initSocketListeners = (
   socket: SocketType,
