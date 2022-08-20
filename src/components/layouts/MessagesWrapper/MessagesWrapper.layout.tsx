@@ -25,7 +25,7 @@ function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
       const msg = allMessagesDiv.children[msgNum] as HTMLElement;
       if (msg) {
         allMessagesDiv.scrollTop =
-          msg.offsetTop - (window.screen.height - window.screen.height * 0.3);
+          msg.offsetTop - (window.screen.height - window.screen.height * 0.35);
       }
     }
   }, [messagesDiv, messages, messagesLoaded, messagesSentDuringSession]);
