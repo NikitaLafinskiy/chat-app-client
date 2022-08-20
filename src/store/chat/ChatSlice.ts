@@ -10,6 +10,7 @@ const initialState: ChatState = {
   messages: [],
   messagesDiv: null,
   messagesLoaded: 30,
+  messagesSentDuringSession: 0,
 };
 
 export const chatSlice = createSlice({
@@ -43,6 +44,14 @@ export const chatSlice = createSlice({
     },
     setMessagesLoaded: (state, action: PayloadAction<number>) => {
       state.messagesLoaded = action.payload;
+    },
+    setMessagesSentDuringSession: (state, action: PayloadAction<number>) => {
+      if (action.payload === 0) {
+        state.messagesSentDuringSession = 0;
+        return;
+      }
+      state.messagesSentDuringSession =
+        state.messagesSentDuringSession + action.payload;
     },
   },
 });

@@ -24,9 +24,9 @@ export class ChatActions {
         ConversationEmitters.joinUser(socket, conversation);
         const res = await ChatServices.getMessages(conversation.id, 0);
 
-        console.log("resetting convo");
         dispatch(chatSlice.actions.setCurrentConversation(conversation));
         dispatch(chatSlice.actions.updateManyMessages(res.data.messages));
+        dispatch(chatSlice.actions.setMessagesSentDuringSession(0));
         dispatch(chatSlice.actions.setMessagesLoaded(res.data.messages.length));
       } catch (err) {
         dispatch(chatSlice.actions.setError("No messages sent"));
@@ -47,8 +47,9 @@ export class ChatActions {
   }
 
   static sendMessage(payload: MessagePayload, socket: SocketType) {
-    return () => {
+    return (dispatch: AppDispatch) => {
       ConversationEmitters.sendMessage(socket, payload);
+      dispatch(chatSlice.actions.setMessagesSentDuringSession(1));
     };
   }
 }

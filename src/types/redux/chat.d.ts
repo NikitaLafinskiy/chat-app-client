@@ -8,4 +8,5 @@ export interface ChatState {
   messages: IMessageFromServer[];
   messagesDiv: HTMLDivElement | null;
   messagesLoaded: number;
+  messagesSentDuringSession: number;
 }

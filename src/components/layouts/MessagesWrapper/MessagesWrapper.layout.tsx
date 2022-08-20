@@ -5,9 +5,8 @@ import "./MessagesWrapper.scss";
 
 function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
   const messagesDiv = useRef<HTMLDivElement>(null);
-  const { messages, messagesLoaded } = useAppSelector(
-    (state) => state.chatReducer
-  );
+  const { messages, messagesLoaded, messagesSentDuringSession } =
+    useAppSelector((state) => state.chatReducer);
   const { isMobile } = useAppSelector((state) => state.screenReducer);
 
   useEffect(() => {
@@ -21,13 +20,15 @@ function MessagesWrapper({ children, conversation }: MessagesWrapperProps) {
         : messagesDiv.current
             ?.getElementsByTagName("div")
             [isMobile ? 2 : 0].getElementsByTagName("div")[0];
-      const msg = allMessagesDiv.children[messagesLoaded] as HTMLElement;
+
+      const msgNum = messagesLoaded + messagesSentDuringSession;
+      const msg = allMessagesDiv.children[msgNum] as HTMLElement;
       if (msg) {
         allMessagesDiv.scrollTop =
-          msg.offsetTop - (window.screen.height - window.screen.height * 0.25);
+          msg.offsetTop - (window.screen.height - window.screen.height * 0.3);
       }
     }
-  }, [messagesDiv, messages, messagesLoaded]);
+  }, [messagesDiv, messages, messagesLoaded, messagesSentDuringSession]);
 
   return (
     <div ref={messagesDiv} className={`layouts__messages-wrapper`}>

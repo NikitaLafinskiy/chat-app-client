@@ -1,7 +1,7 @@
 import { Routes } from "pages/Routes";
 import { useEffect } from "react";
 import { io } from "socket.io-client";
-import { useAppDispatch, useAppSelector } from "hooks/redux.hooks";
+import { useAppDispatch } from "hooks/redux.hooks";
 import { socketSlice } from "store/socket/SocketSlice";
 import { screenSlice } from "store/screen/ScreenSlice";
 import { SocketType } from "types/socket.d";
@@ -11,16 +11,13 @@ import { MainWrapper } from "components/layouts";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { currentConversation } = useAppSelector((state) => state.chatReducer);
   const nav = useNavigate();
   let socket: SocketType;
 
   useEffect(() => {
-    console.log("use ran");
-    const socket: SocketType = io("https://chat-platform-server.herokuapp.com");
+    socket = io("https://chat-platform-server.herokuapp.com");
     // socket = io("http://localhost:6969");
     dispatch(socketSlice.actions.setSocket(socket));
-    console.log(currentConversation);
     initSocketListeners(socket, dispatch, nav);
   }, [dispatch]);
 
