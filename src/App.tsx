@@ -15,7 +15,7 @@ function App() {
   let socket: SocketType;
 
   useEffect(() => {
-    socket = io("http://167.172.105.123");
+    socket = io("https://cosmic-server.art");
     // socket = io("http://localhost:6969");
     dispatch(socketSlice.actions.setSocket(socket));
     initSocketListeners(socket, dispatch, nav);
