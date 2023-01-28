@@ -20,7 +20,11 @@ function Conversations({ conversations }: ConversationsProps) {
     );
   }
 
-  return <div className={`modules__conversation_empty`}></div>;
+  return (
+    <div className={`modules__conversation_empty`}>
+      Add a friend to start chatting!
+    </div>
+  );
 }
 
 export default Conversations;

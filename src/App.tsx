@@ -15,8 +15,8 @@ function App() {
   let socket: SocketType;
 
   useEffect(() => {
-    socket = io("https://chat-platform-server.herokuapp.com");
-    // socket = io("http://localhost:6969");
+    // socket = io("https://chat-platform-server.herokuapp.com");
+    socket = io("http://localhost:6969");
     dispatch(socketSlice.actions.setSocket(socket));
     initSocketListeners(socket, dispatch, nav);
   }, [dispatch]);
